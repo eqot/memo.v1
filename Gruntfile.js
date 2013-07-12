@@ -328,7 +328,7 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'connect:test',
-    'karma'
+    'karma:unit'
   ]);
 
   grunt.registerTask('e2e', [

@@ -2,9 +2,9 @@
 
 angular.module('memoApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    $scope.memos = [
+      {title: 'memo1', content: 'This is a test 1.'},
+      {title: 'memo2', content: 'This is a test 2.'},
+      {title: 'memo3', content: 'This is a test 3.'}
     ];
   });

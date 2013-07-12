@@ -19,4 +19,9 @@ describe('Controller: MainCtrl', function () {
   it('should attach a list of memos to the scope', function () {
     expect(scope.memos.length).toBe(3);
   });
+
+  it('should set the default value of orderProp model', function() {
+    expect(scope.orderProp).toBe('age');
+  });
+
 });

@@ -2,11 +2,17 @@
   <div class="row-fluid">
     <div class="span3">
       <h1>Note</h1>
-      Search: <input ng-model="query">
+      Search: <input ng-model="query"><br>
+      Sort By:
+      <select ng-model="orderProp">
+        <option value="title">Alphabetical</option>
+        <option value="age">Newest</option>
+        <option value="-age">Oldest</option>
+      </select>
     </div>
     <div class="span9">
       <ul class="memos">
-        <li ng-repeat="memo in memos | filter:query">
+        <li ng-repeat="memo in memos | filter:query | orderBy:orderProp">
           {{ memo.title }}
           <p>{{ memo.content }}</p>
         </li>

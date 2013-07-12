@@ -1,8 +1,16 @@
-<h1>Note</h1>
-
-<ul>
-  <li ng-repeat="memo in memos">
-    {{ memo.title }}
-    <p>{{ memo.content }}</p>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <h1>Note</h1>
+      Search: <input ng-model="query">
+    </div>
+    <div class="span9">
+      <ul class="memos">
+        <li ng-repeat="memo in memos | filter:query">
+          {{ memo.title }}
+          <p>{{ memo.content }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

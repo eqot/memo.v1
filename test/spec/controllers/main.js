@@ -5,19 +5,28 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('memoApp'));
 
-  var MainCtrl,
-    scope;
+  var scope, ctrl, $httpBackend;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('memos/memos.json').
+    respond([
+      {title: 'Memo 0'},
+      {title: 'Memo 1'}
+    ]);
+
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
+    ctrl = $controller('MainCtrl', {$scope: scope});
   }));
 
-  it('should attach a list of memos to the scope', function () {
-    expect(scope.memos.length).toBe(3);
+  it('should create "memos" model with 2 memos fetched from xhr', function() {
+    expect(scope.memos).toBeUndefined();
+    $httpBackend.flush();
+
+    expect(scope.memos).toEqual([
+      {title: 'Memo 0'},
+      {title: 'Memo 1'}
+    ]);
   });
 
   it('should set the default value of orderProp model', function() {

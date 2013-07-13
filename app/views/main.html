@@ -13,8 +13,10 @@
     <div class="span9">
       <ul class="memos">
         <li ng-repeat="memo in memos | filter:query | orderBy:orderProp">
-          {{ memo.title }}
-          <p>{{ memo.content }}</p>
+          <a href="#/memos/{{memo.id}}">
+            {{memo.title}}
+          </a>
+          <p>{{memo.content}}</p>
         </li>
       </ul>
     </div>

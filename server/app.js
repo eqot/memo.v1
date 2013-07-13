@@ -20,14 +20,17 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../dist')));
+app.engine('html', require('ejs').renderFile);
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', function(request, response) {
+  response.render(path.join(__dirname, '../dist/index.html'));
+});
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){

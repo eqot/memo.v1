@@ -7,4 +7,8 @@ angular.module('memoApp')
     });
 
     $scope.orderProp = 'age';
+  })
+
+  .controller('MemoDetailCtrl', function ($scope, $routeParams) {
+    $scope.memoId = $routeParams.memoId;
   });

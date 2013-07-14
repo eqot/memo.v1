@@ -9,6 +9,10 @@ angular.module('memoApp')
     $scope.orderProp = 'age';
   })
 
-  .controller('MemoDetailCtrl', function ($scope, $routeParams) {
+  .controller('MemoDetailCtrl', function ($scope, $routeParams, $http) {
     $scope.memoId = $routeParams.memoId;
+
+    $http.get('memos/' + $routeParams.memoId + '.json').success(function (data) {
+      $scope.memo = data;
+    });
   });

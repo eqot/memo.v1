@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: MemoListCtrl', function () {
 
   // load the controller's module
   beforeEach(module('memoApp'));
@@ -16,7 +16,7 @@ describe('Controller: MainCtrl', function () {
     ]);
 
     scope = $rootScope.$new();
-    ctrl = $controller('MainCtrl', {$scope: scope});
+    ctrl = $controller('MemoListCtrl', {$scope: scope});
   }));
 
   it('should create "memos" model with 2 memos fetched from xhr', function() {

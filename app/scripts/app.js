@@ -3,11 +3,11 @@
 angular.module('memoApp', [])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .when('/memos', {
+        templateUrl: 'views/memo-list.html',
+        controller: 'MemoListCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/memos'
       });
   });

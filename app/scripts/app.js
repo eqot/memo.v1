@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('memoApp', [])
+angular.module('memoApp', ['memoFilters'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/memos', {

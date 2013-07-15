@@ -3,16 +3,19 @@
     "id": "0",
     "title": "memo1",
     "content": "This is a test 1.",
-    "age": 0
+    "age": 0,
+    "done": true
   }, {
     "id": "1",
     "title": "memo2",
     "content": "This is a test 2.",
-    "age": 2
+    "age": 2,
+    "done": true
   }, {
     "id": "2",
     "title": "memo3",
     "content": "This is a test 3.",
-    "age": 1
+    "age": 1,
+    "done": false
   }
 ]

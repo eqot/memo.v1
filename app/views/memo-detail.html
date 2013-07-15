@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span1">
-        Memo {{memoId}}
-    </div>
+    <input type="text" class="span12" ng-model="memo.title">
+  </div>
+  <div class="row-fluid">
     <textarea class="span5" rows="10" ng-model="memo.content"></textarea>
     <span class="span5" ng-bind-html="memo.content | markdown"></span>
   </div>

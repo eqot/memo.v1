@@ -1,7 +1,11 @@
-<h1>
-  Memo {{memoId}}
-</h1>
-
-<div>
-  {{memo.content}}
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class"span1">
+      <h1>
+        Memo {{memoId}}
+      </h1>
+    </div>
+    <textarea class="span5" rows="10" ng-model="memo.content"></textarea>
+    <p class="span5">{{memo.content | markdown}}</p>
+  </div>
 </div>

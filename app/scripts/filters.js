@@ -1,3 +1,5 @@
+/*global Showdown */
+
 'use strict';
 
 angular.module('memoFilters', [])
@@ -8,7 +10,13 @@ angular.module('memoFilters', [])
   })
 
   .filter('markdown', function () {
+    var converter = new Showdown.converter();
     return function (input) {
-      return input;
+      if (!input) {
+        return null;
+      }
+
+      // console.log(input);
+      return converter.makeHtml(input);
     };
   });

@@ -1,18 +1,12 @@
 'use strict';
 
 angular.module('memoApp')
-  .controller('MemoListCtrl', function ($scope, $http) {
-    $http.get('memos/memos.json').success(function (data){
-      $scope.memos = data;
-    });
-
+  .controller('MemoListCtrl', function ($scope, Memo) {
+    $scope.memos = Memo.query();
     $scope.orderProp = 'age';
   })
 
-  .controller('MemoDetailCtrl', function ($scope, $routeParams, $http) {
+  .controller('MemoDetailCtrl', function ($scope, $routeParams, Memo) {
     $scope.memoId = $routeParams.memoId;
-
-    $http.get('memos/' + $routeParams.memoId + '.json').success(function (data) {
-      $scope.memo = data;
-    });
+    $scope.memo = Memo.get({memoId: $routeParams.memoId});
   });

@@ -9,10 +9,14 @@
         <option value="age">Newest</option>
         <option value="-age">Oldest</option>
       </select>
+      <button ng-click="createMemo()">Create memo</button>
     </div>
     <div class="span9">
       <ul class="memos">
         <li ng-repeat="memo in memos | filter:query | orderBy:orderProp">
+          <a href="#/memos/{{memo.key}}">
+            {{memo.key}}
+          </a>
           <a href="#/memos/{{memo.id}}">
             {{memo.title}}
           </a>

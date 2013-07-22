@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <input id="title" type="text" class="span12" ng-model="memo.title" ng-change="update()">
+    <input id="title" type="text" class="span11" ng-model="memo.title" ng-change="update()">
+    <span>{{saved | checkmark}}</span>
   </div>
   <div class="row-fluid">
     <div class="span6">

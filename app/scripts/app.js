@@ -11,6 +11,10 @@ angular.module('memoApp', ['memoFilters', 'memoServices', 'ngSanitize'])
         templateUrl: 'views/memo-detail.html',
         controller: 'MemoDetailCtrl'
       })
+      .when('/memos/:memoId/edit', {
+        templateUrl: 'views/memo-edit.html',
+        controller: 'MemoEditCtrl'
+      })
       .otherwise({
         redirectTo: '/memos'
       });

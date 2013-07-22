@@ -10,4 +10,25 @@ angular.module('memoApp')
         content: ''
       };
     });
+
+    var updateTimer = null;
+    $scope.update = function () {
+      if (updateTimer) {
+        clearTimeout(updateTimer);
+        updateTimer = null;
+      }
+
+      updateTimer = setTimeout(function () {
+        save();
+      }, 3000);
+    };
+
+    function save () {
+      console.log('save()');
+      var memo = {
+        title: $scope.memo.title,
+        content: $scope.memo.content
+      };
+      console.log(memo);
+    }
   });

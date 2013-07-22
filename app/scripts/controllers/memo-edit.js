@@ -37,7 +37,7 @@ angular.module('memoApp')
       };
       var jsonData = JSON.stringify(memo);
       // console.log(jsonData);
-      $http.get('//192.168.33.10:7379/SET/' + $scope.memoId + '/' + jsonData).success(function () {
+      $http.put('//192.168.33.10:7379/SET/' + $scope.memoId, jsonData).success(function () {
         // console.log('saved.');
         $scope.saved = true;
       });

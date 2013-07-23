@@ -1,11 +1,35 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <input id="title" type="text" class="span11" ng-model="memo.title" ng-change="update()" disabled>
-    <a ng-href="{{urlEdit}}" class="btn btn-primary">Edit</a>
+    <!-- view mode -->
+    <div ng-hide="editable">
+      <input id="title" type="text" class="span11" ng-model="memo.title" disabled>
+      <a ng-click="setEditable(true)" class="btn btn-primary">Edit</a>
+    </div>
+
+    <!-- edit mode -->
+    <div ng-show="editable">
+      <input id="title" type="text" class="span11" ng-model="memo.title" ng-change="update()">
+      <a ng-click="setEditable(false)" class="btn btn-primary">Done</a>
+      <span>{{saved | checkmark}}</span>
+    </div>
   </div>
+
   <div class="row-fluid">
-    <div class="span12">
-      <span class="span5" ng-bind-html="memo.content | markdown"></span>
+    <!-- view mode -->
+    <div ng-hide="editable">
+      <div class="span12">
+        <span class="span5" ng-bind-html="memo.content | markdown"></span>
+      </div>
+    </div>
+
+    <!-- edit mode -->
+    <div ng-show="editable">
+      <div class="span6">
+        <span class="span5" ng-bind-html="memo.content | markdown"></span>
+      </div>
+      <div class="span6">
+        <textarea class="span12" rows="20" ng-model="memo.content" ng-change="update()"></textarea>
+      </div>
     </div>
   </div>
 </div>

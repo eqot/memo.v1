@@ -8,7 +8,7 @@ angular.module('memoApp')
     $scope.saved = true;
 
     $http.get('//192.168.33.10:7379/GET/' + $scope.memoId).success(function (data) {
-      var memo = JSON.parse(data.GET);
+      var memo = angular.fromJson(data.GET);
       $scope.memo = {
         title: memo.title || '',
         content: memo.content || ''
@@ -38,7 +38,7 @@ angular.module('memoApp')
         title: $scope.memo.title,
         content: $scope.memo.content
       };
-      var jsonData = JSON.stringify(memo);
+      var jsonData = angular.toJson(memo, true);
       // console.log(jsonData);
       $http.put('//192.168.33.10:7379/SET/' + $scope.memoId, jsonData).success(function () {
         // console.log('saved.');

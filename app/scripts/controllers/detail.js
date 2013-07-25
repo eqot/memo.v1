@@ -1,18 +1,14 @@
 'use strict';
 
 angular.module('memoApp')
-  .controller('MemoDetailCtrl', function ($scope, $routeParams, $http) {
+  .controller('MemoDetailCtrl', function ($scope, $routeParams, Memo) {
     $scope.memoId = $routeParams.memoId;
 
     $scope.editable = false;
     $scope.saved = true;
 
-    $http.get('//192.168.33.10:7379/GET/' + $scope.memoId).success(function (data) {
-      var memo = angular.fromJson(data.GET);
-      $scope.memo = {
-        title: memo.title || '',
-        content: memo.content || ''
-      };
+    Memo.get($scope.memoId, function (memo) {
+      $scope.memo = memo;
     });
 
     $scope.setEditable = function (flag) {
@@ -44,13 +40,7 @@ angular.module('memoApp')
     }
 
     function doSave () {
-      var memo = {
-        title: $scope.memo.title,
-        content: $scope.memo.content
-      };
-      var jsonData = angular.toJson(memo, true);
-      // console.log(jsonData);
-      $http.put('//192.168.33.10:7379/SET/' + $scope.memoId, jsonData).success(function () {
+      Memo.save($scope.memoId, $scope.memo, function () {
         // console.log('saved.');
         $scope.saved = true;
       });

@@ -8,7 +8,7 @@
 
     <!-- edit mode -->
     <div ng-show="editable">
-      <input id="title" type="text" class="span11" ng-model="memo.title" ng-change="update()">
+      <input id="title" type="text" class="span11" ng-model="memo.title" ng-change="lazySave()">
       <a ng-click="setEditable(false)" class="btn btn-primary">Done</a>
       <span>{{saved | checkmark}}</span>
     </div>
@@ -28,7 +28,7 @@
         <span class="span5" ng-bind-html="memo.content | markdown"></span>
       </div>
       <div class="span6">
-        <textarea class="span12" rows="20" ng-model="memo.content" ng-change="update()"></textarea>
+        <textarea class="span12" rows="20" ng-model="memo.content" ng-change="lazySave()"></textarea>
       </div>
     </div>
   </div>

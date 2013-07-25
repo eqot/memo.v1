@@ -17,23 +17,33 @@ angular.module('memoApp')
 
     $scope.setEditable = function (flag) {
       $scope.editable = flag;
+
+      if (!flag) {
+        cancelLazySave();
+        doSave();
+      }
     };
 
-    var updateTimer = null;
-    $scope.update = function () {
+    var saveTimer = null;
+    $scope.lazySave = function () {
       $scope.saved = false;
 
-      if (updateTimer) {
-        clearTimeout(updateTimer);
-        updateTimer = null;
-      }
+      cancelLazySave();
 
-      updateTimer = setTimeout(function () {
-        save();
+      saveTimer = setTimeout(function () {
+        saveTimer = null;
+        doSave();
       }, 3000);
     };
 
-    function save () {
+    function cancelLazySave () {
+      if (saveTimer) {
+        clearTimeout(saveTimer);
+        saveTimer = null;
+      }
+    }
+
+    function doSave () {
       var memo = {
         title: $scope.memo.title,
         content: $scope.memo.content

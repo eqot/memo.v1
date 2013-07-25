@@ -4,11 +4,11 @@ angular.module('memoApp', ['memoFilters', 'memoServices', 'ngSanitize'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/memos', {
-        templateUrl: 'views/memo-list.html',
+        templateUrl: 'views/list.html',
         controller: 'MemoListCtrl'
       })
       .when('/memos/:memoId', {
-        templateUrl: 'views/memo-detail.html',
+        templateUrl: 'views/detail.html',
         controller: 'MemoDetailCtrl'
       })
       .otherwise({

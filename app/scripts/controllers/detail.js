@@ -2,12 +2,12 @@
 
 angular.module('memoApp')
   .controller('MemoDetailCtrl', function ($scope, $routeParams, Memo) {
-    $scope.memoId = $routeParams.memoId;
+    var id = $routeParams.memoId;
 
     $scope.editable = false;
     $scope.saved = true;
 
-    Memo.get($scope.memoId, function (memo) {
+    Memo.get(id, function (memo) {
       $scope.memo = memo;
     });
 
@@ -40,7 +40,7 @@ angular.module('memoApp')
     }
 
     function doSave () {
-      Memo.save($scope.memoId, $scope.memo, function () {
+      Memo.save(id, $scope.memo, function () {
         // console.log('saved.');
         $scope.saved = true;
       });
